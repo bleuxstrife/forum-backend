@@ -1,0 +1,7 @@
+node_modules
+coverage
+note-api-webserver.pem
+.env
+.test.env
+package-lock.json
+Bleuxstrife21_accessKeys.csv
