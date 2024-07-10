@@ -27,12 +27,12 @@ const createServer = async (container) => {
   ]);
 
   server.auth.strategy(config.auth.jwtStrategy, 'jwt', {
-    keys: config.app.accessTokenKey,
+    keys: config.auth.accessTokenKey,
     verify: {
       aud: false,
       iss: false,
       sub: false,
-      maxAgeSec: config.app.accessTokenAge,
+      maxAgeSec: config.auth.accessTokenAge,
     },
     validate: (artifacts) => ({
       isValid: true,
