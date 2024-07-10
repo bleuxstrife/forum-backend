@@ -9,17 +9,17 @@ class JwtTokenManager extends AuthenticationTokenManager {
   }
 
   async createAccessToken(payload) {
-    return this._jwt.generate(payload, config.app.accessTokenKey);
+    return this._jwt.generate(payload, config.auth.accessTokenKey);
   }
 
   async createRefreshToken(payload) {
-    return this._jwt.generate(payload, config.app.refreshTokenKey);
+    return this._jwt.generate(payload, config.auth.refreshTokenKey);
   }
 
   async verifyRefreshToken(token) {
     try {
       const artifacts = this._jwt.decode(token);
-      this._jwt.verify(artifacts, config.app.refreshTokenKey);
+      this._jwt.verify(artifacts, config.auth.refreshTokenKey);
     } catch (error) {
       throw new InvariantError('refresh token tidak valid');
     }

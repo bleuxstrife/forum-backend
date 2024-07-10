@@ -26,7 +26,7 @@ const createServer = async (container) => {
     },
   ]);
 
-  server.auth.strategy('expert_exam_jwt', 'jwt', {
+  server.auth.strategy(config.auth.jwtStrategy, 'jwt', {
     keys: config.app.accessTokenKey,
     verify: {
       aud: false,

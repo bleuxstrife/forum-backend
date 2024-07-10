@@ -11,11 +11,9 @@ if (process.env.NODE_ENV === 'test') {
 
 const config = {
   app: {
-    host: process.env.HOST,
+    host: process.env.NODE_ENV !== 'production' ? 'localhost' : '0.0.0.0',
     port: process.env.PORT,
-    accessTokenKey: process.env.ACCESS_TOKEN_KEY,
-    refreshTokenKey: process.env.REFRESH_TOKEN_KEY,
-    accessTokenAge: process.env.ACCCESS_TOKEN_AGE,
+    debug: process.env.NODE_ENV === 'development' ? { request: ['error'] } : {},
   },
   database: {
     host: process.env.PGHOST,
@@ -23,6 +21,12 @@ const config = {
     user: process.env.PGUSER,
     password: process.env.PGPASSWORD,
     database: process.env.PGDATABASE,
+  },
+  auth: {
+    jwtStrategy: 'expert_exam_jwt',
+    accessTokenKey: process.env.ACCESS_TOKEN_KEY,
+    refreshTokenKey: process.env.REFRESH_TOKEN_KEY,
+    accessTokenAge: process.env.ACCESS_TOKEN_AGE,
   },
 };
 
