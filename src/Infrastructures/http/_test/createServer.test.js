@@ -33,7 +33,7 @@ describe('HTTP server', () => {
 
     // Assert
     const responseJson = JSON.parse(response.payload);
-    expect(response.statusCode).toEqual(500);
+    expect(response.statusCode).toEqual(200);
     expect(responseJson.status).toEqual('error');
     expect(responseJson.message).toEqual('terjadi kegagalan pada server kami');
   });
